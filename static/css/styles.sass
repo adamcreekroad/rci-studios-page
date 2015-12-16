@@ -1,0 +1,72 @@
+html, body
+  height: 100%
+body
+  background-color: #555
+  font-family: "Oxygen", sans-serif
+#main_content
+  min-height: 100%
+  height: auto
+  margin: 0 auto -50px
+  padding: 0 0 50px
+#footer
+  height: 50px
+.helper-div
+  background-color: #fff
+.jumbotron, .card
+  border-radius: 0px
+  margin-bottom: 0
+.card-list .card
+  border: none
+  border-right: 2px solid #5cb85c
+.card-list .card.card-last
+  border-right: none
+.no-gutter
+  padding: 0 15px
+.div-divider
+  height: 55px
+.header-divider
+  margin: 0
+  padding: 10px 0
+.no-gutter > [class*='col-']
+  padding-right: 0
+  padding-left: 0
+.navbar-brand
+  margin-right: 50px
+  line-height: 3rem
+  font-size: 3rem
+.nav-link
+  transition: color 0.2s
+.card
+  border: none
+.carousel-item img
+  margin-top: -50px
+.bg-dark
+  color: #fff
+  background-color: #555
+.nav
+  line-height: 3rem
+  font-size: 1.3rem
+.social-media-icon
+  max-height: 50px
+  -webkit-filter: contrast(0.8)
+  cursor: pointer
+  transition: -webkit-filter 0.25s ease
+  &:hover
+    -webkit-filter: contrast(1)
+.btn
+  transition: background-color 0.25s ease, color 0.25s ease
+#home_carousel, .carousel-inner
+  max-height: 402px
+.carousel-fade
+  .carousel-inner
+    .carousel-item
+      transition-property: opacity
+    .carousel-item, .active.left, .active.right
+      opacity: 0
+    .active, .next.left, .prev.right
+      opacity: 1
+    .next, .prev, .active.left, .active.right
+      left: 0
+      transform: translate3d(0, 0, 0)
+  .carousel-control
+    z-index: 2

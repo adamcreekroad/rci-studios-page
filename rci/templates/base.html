@@ -1,0 +1,32 @@
+{% load staticfiles %}
+{% load compress %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RCI Studios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/tether.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen:400,700,300' rel='stylesheet' type='text/css'>
+    {% compress css %}
+      <link href="{% static 'css/styles.sass' %}" rel="stylesheet" type="text/x-scss" />
+    {% endcompress css %}
+    <script src="{% static 'js/jquery-1.11.3.js' %}"></script>
+    <script src="{% static 'js/tether.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div id="main_content">
+      {% block content %}{% endblock content %}
+    </div>
+    <footer id="footer">
+      <div class="container">
+        <div class="bg-inverse">
+          &copy; 2015 rci studios
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
