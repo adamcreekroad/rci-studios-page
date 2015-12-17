@@ -28,12 +28,12 @@ ALLOWED_HOSTS = ['*']
 
 ON_HEROKU = os.environ.get('ON_HEROKU')
 
+DEBUG = True
+
 if ON_HEROKU:
-    DEBUG = False
     DATABASES = {}
     DATABASES['default'] =  dj_database_url.config()
 else:
-    DEBUG = True
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
