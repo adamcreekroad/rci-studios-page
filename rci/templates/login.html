@@ -1,0 +1,52 @@
+{% block content %}
+  <div class="modal fade" id="login_modal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content bg-inverse">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="modal-body">
+          <form id="user_login_form" class="login-form">
+            {% csrf_token %}
+            <fieldset class="form-group">
+              <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+            </fieldset>
+            <fieldset class="form-group">
+              <input type="password" class="form-control" id="password" name="password"
+              placeholder="Password">
+            </fieldset>
+            <fieldset class="form-group">
+              <button class="btn btn-success-outline btn-block" type="submit">
+                Log in
+              </button>
+            </fieldset>
+          </form>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+{% endblock content %}
+<script>
+  $("input.form-control").on('blur', function(){
+    if ($(this).val() == "") {
+      $(this).removeClass("has-text");
+    } else {
+      $(this).addClass("has-text");
+    }
+  });
+  $("#user_login_form").on('submit', function(e){
+    e.preventDefault();
+    $.ajax({
+      data:    $(this).serialize(),
+      method:  "POST",
+      url:     "/login",
+      success: function(data) {
+        $("#nav_bar").html(data);
+        $("#login_modal").modal('hide');
+      }
+    });
+  });
+</script>

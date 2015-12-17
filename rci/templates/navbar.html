@@ -28,9 +28,23 @@
         </li>
       </ul>
       <ul class="nav navbar-nav pull-xs-right">
+        {% if user.is_authenticated %}
+          <li class="dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="user_dropdown"
+            aria-haspopup="true" aria-expanded="false">{{ user.username }}</a>
+            <div class="dropdown-menu bg-inverse dropdown-menu-right"
+            aria-labelledby="user_dropdown">
+              <a class="dropdown-item" href="#">View Files</a>
+              <a class="dropdown-item" href="#">Account Settings</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/logout">Log out</a>
+            </div>
+          </li>
+        {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Log in</a>
+          <a class="nav-link" href="#" data-toggle="modal" data-target="#login_modal">Log in</a>
         </li>
+        {% endif %}
       </ul>
     </div>
   </nav>

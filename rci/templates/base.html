@@ -19,10 +19,13 @@
     <script src="{% static 'js/SmoothScroll.js' %}"></script>
   </head>
   <body>
-    {% include 'navbar.html' %}
+    <div id="nav_bar">
+      {% include 'navbar.html' %}
+    </div>
     <div id="main_content">
       {% block content %}{% endblock content %}
     </div>
+    {% include 'login.html' %}
     {% include 'footer.html' %}
   </body>
 </html>
