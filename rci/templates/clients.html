@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+  <div class="container">
+    <div class="clients" style="background-color:#373a3c;">
+      <div class="row no-gutter">
+        <div class="col-sm-12 text-xs-center">
+          <h2 class="header-divider bg-inverse">Some of our clients</h2>
+        </div>
+      </div>
+      <div class="row no-gutter">
+        <div style="padding:0 15px;">
+          {% for index, client, genre in clients %}
+            <div class="col-sm-3" style="padding-bottom:15px;">
+              <div class="card social-media-card">
+                <div class="card-block bg-success">
+                  <h4 class="card-title">{{client}}</h4>
+                  <p class="card-text">{{genre}}</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item {% if index|divisibleby:1 %}text-success bold{% endif %}">Tracking</li>
+                  <li class="list-group-item {% if index|divisibleby:3 %}text-success bold{% endif %}">Producing</li>
+                  <li class="list-group-item {% if index|divisibleby:2 %}text-success bold{% endif %}">Mixing</li>
+                  <li class="list-group-item {% if index|divisibleby:2 %}text-success bold{% endif %}">Mastering</li>
+                </ul>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

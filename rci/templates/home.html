@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block content %}
   <div class="container">
-    <div class="helper-div">
+    <div class="helper-div home">
       <div class="row no-gutter">
         <div class="col-sm-6">
           <div id="home_carousel" class="carousel slide carousel-fade" data-ride="carousel">
@@ -90,74 +90,78 @@
                 <img class="social-media-icon" src="{% static 'images/instagram.png' %}"/>
               </a>
             </div>
-            <div class="card bg-inverse">
-              <div class="card-block">
-                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/0sXazsL0o6/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">@aphasiaofficial &#39;s EP is done and being sent out to be pressed! This EP has been a lot of work, and it was a ton of fun working with them. The final product is one of my best works to date (well, the 3 tracks on it that were recorded recently are). Check them out and pick up a copy April 8th at their release show!</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by RCI Studios (@rci_studios) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-03-26T13:50:44+00:00">Mar 26, 2015 at 6:50am PDT</time></p></div></blockquote>
-                <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
+            {% for post in ig_posts %}
+              <div class="card bg-inverse social-media-card">
+                <div class="card-block">
+                  <h5 class="card-title">
+                    <a href="https://www.instagram.com/rci_studios" target="_blank">
+                      <img class="ig-avatar" src="{{ post.user.profile_picture }}"/>
+                    </a>
+                    <strong>{{ post.user.username }}</strong>
+                  </h5>
+                  <p class="lead">
+                    <img class="ig-post" src="{{ post.images.standard_resolution.url }}"/>
+                    {{ post.caption.text }}
+                  </p>
+                  <p class="text-xs-right">{{ post.likes.count }} likes</p>
+                </div>
               </div>
-            </div>
-            <div class="card bg-inverse">
-              <div class="card-block">
-                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/zYPb6sL0ok/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Forgot to post this from a couple weeks back tracking guitars with the new @wearemisled . That 5150 III fucking kills!</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by RCI Studios (@rci_studios) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-02-21T21:44:47+00:00">Feb 21, 2015 at 1:44pm PST</time></p></div></blockquote>
-                <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
-              </div>
-            </div>
-            <div class="card bg-inverse">
-              <div class="card-block">
-                <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-version="6" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:658px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:8px;"> <div style=" background:#F8F8F8; line-height:0; margin-top:40px; padding:50% 0; text-align:center; width:100%;"> <div style=" background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAMAAAApWqozAAAAGFBMVEUiIiI9PT0eHh4gIB4hIBkcHBwcHBwcHBydr+JQAAAACHRSTlMABA4YHyQsM5jtaMwAAADfSURBVDjL7ZVBEgMhCAQBAf//42xcNbpAqakcM0ftUmFAAIBE81IqBJdS3lS6zs3bIpB9WED3YYXFPmHRfT8sgyrCP1x8uEUxLMzNWElFOYCV6mHWWwMzdPEKHlhLw7NWJqkHc4uIZphavDzA2JPzUDsBZziNae2S6owH8xPmX8G7zzgKEOPUoYHvGz1TBCxMkd3kwNVbU0gKHkx+iZILf77IofhrY1nYFnB/lQPb79drWOyJVa/DAvg9B/rLB4cC+Nqgdz/TvBbBnr6GBReqn/nRmDgaQEej7WhonozjF+Y2I/fZou/qAAAAAElFTkSuQmCC); display:block; height:44px; margin:0 auto -44px; position:relative; top:-22px; width:44px;"></div></div> <p style=" margin:8px 0 0 0; padding:0 4px;"> <a href="https://www.instagram.com/p/yIjk1qL0lS/" style=" color:#000; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none; word-wrap:break-word;" target="_blank">Blasting some guitar with @aphasiaofficial</a></p> <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">A photo posted by RCI Studios (@rci_studios) on <time style=" font-family:Arial,sans-serif; font-size:14px; line-height:17px;" datetime="2015-01-21T23:01:31+00:00">Jan 21, 2015 at 3:01pm PST</time></p></div></blockquote>
-                <script async defer src="//platform.instagram.com/en_US/embeds.js"></script>
-              </div>
-            </div>
+            {% endfor %}
           </div>
-          <div class="col-sm-4 bg-inverse" style="padding-top:10px;">
+          <div class="col-sm-5 bg-inverse" style="padding-top:10px;">
             <div class="text-xs-center">
               <a href="https://www.facebook.com/rci.studios" target="_blank">
                 <img class="social-media-icon" src="{% static 'images/facebook.png' %}"/>
               </a>
             </div>
-            <div class="card bg-inverse">
+            <div class="card bg-inverse social-media-card">
               <div class="card-block">
-                <div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/RCI.Studios/posts/702570863113264" data-width="330"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/RCI.Studios/posts/702570863113264"><p>Haven&#039;t updated the page in a while, but there&#039;s been many good new things happening! RCI has moved to a bigger better...</p>Posted by <a href="https://www.facebook.com/RCI.Studios/">RCI Studios</a> on&nbsp;<a href="https://www.facebook.com/RCI.Studios/posts/702570863113264">Monday, July 21, 2014</a></blockquote></div></div>
+                <div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/RCI.Studios/posts/702570863113264" data-width="100%"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/RCI.Studios/posts/702570863113264"><p>Haven&#039;t updated the page in a while, but there&#039;s been many good new things happening! RCI has moved to a bigger better...</p>Posted by <a href="https://www.facebook.com/RCI.Studios/">RCI Studios</a> on&nbsp;<a href="https://www.facebook.com/RCI.Studios/posts/702570863113264">Monday, July 21, 2014</a></blockquote></div></div>
               </div>
             </div>
-            <div class="card bg-inverse">
+            <div class="card bg-inverse social-media-card">
               <div class="card-block">
-                <div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/RCI.Studios/posts/539701956066823" data-width="330"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/RCI.Studios/posts/539701956066823"><p>Locked down the location for the new RCI studio space, remodeling should be happening soon and hopefully it will be ready mid-late August!</p>Posted by <a href="https://www.facebook.com/RCI.Studios/">RCI Studios</a> on&nbsp;<a href="https://www.facebook.com/RCI.Studios/posts/539701956066823">Sunday, July 7, 2013</a></blockquote></div></div>
+                <div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/RCI.Studios/posts/539701956066823" data-width="100%"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/RCI.Studios/posts/539701956066823"><p>Locked down the location for the new RCI studio space, remodeling should be happening soon and hopefully it will be ready mid-late August!</p>Posted by <a href="https://www.facebook.com/RCI.Studios/">RCI Studios</a> on&nbsp;<a href="https://www.facebook.com/RCI.Studios/posts/539701956066823">Sunday, July 7, 2013</a></blockquote></div></div>
               </div>
             </div>
-            <div class="card bg-inverse">
+            <div class="card bg-inverse social-media-card">
               <div class="card-block">
-                <div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/RCI.Studios/posts/516829788354040:0" data-width="330"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/RCI.Studios/posts/516829788354040:0"><p>My SCA N72 (Neve 1272 mic preamp clone) is now assembled! It&#039;s just gotta be tested and then shipped to me. Can&#039;t wait to use it and thanks goes to my dad for the assembly.</p>Posted by <a href="https://www.facebook.com/RCI.Studios/">RCI Studios</a> on&nbsp;<a href="https://www.facebook.com/RCI.Studios/posts/516829788354040:0">Monday, May 6, 2013</a></blockquote></div></div>
+                <div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/RCI.Studios/posts/516829788354040:0" data-width="100%"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/RCI.Studios/posts/516829788354040:0"><p>My SCA N72 (Neve 1272 mic preamp clone) is now assembled! It&#039;s just gotta be tested and then shipped to me. Can&#039;t wait to use it and thanks goes to my dad for the assembly.</p>Posted by <a href="https://www.facebook.com/RCI.Studios/">RCI Studios</a> on&nbsp;<a href="https://www.facebook.com/RCI.Studios/posts/516829788354040:0">Monday, May 6, 2013</a></blockquote></div></div>
+              </div>
+            </div>
+            <div class="card bg-inverse social-media-card">
+              <div class="card-block">
+                <div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/RCI.Studios/posts/499001083470244:0" data-width="500"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/RCI.Studios/posts/499001083470244:0"><p>Divinex is starting their full length, drums sound awesome!</p>Posted by <a href="https://www.facebook.com/RCI.Studios/">RCI Studios</a> on&nbsp;<a href="https://www.facebook.com/RCI.Studios/posts/499001083470244:0">Friday, March 15, 2013</a></blockquote></div></div>
               </div>
             </div>
           </div>
-          <div class="col-sm-4 bg-inverse" style="padding-top:10px;">
+          <div class="col-sm-3 bg-inverse" style="padding-top:10px;">
             <div class="text-xs-center">
               <a href="https://soundcloud.com/adam-remembertomorrow" target="_blank">
                 <img class="social-media-icon" src="{% static 'images/soundcloud.png' %}"/>
               </a>
             </div>
-            <div class="card bg-inverse">
+            <div class="card bg-inverse social-media-card">
               <div class="card-block">
-                <h4 class="card-title">Aphasia "Self Destruct"</h4>
+                <p class="card-title"><strong>Aphasia</strong> "Self Destruct"</p>
                 <iframe width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/152630082&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
               </div>
             </div>
-            <div class="card bg-inverse">
+            <div class="card bg-inverse social-media-card">
               <div class="card-block">
-                <h4 class="card-title">Misled "Blackout"</h4>
+                <p class="card-title"><strong>Misled</strong> "Blackout"</p>
                 <iframe width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/127032658&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
               </div>
             </div>
-            <div class="card bg-inverse">
+            <div class="card bg-inverse social-media-card">
               <div class="card-block">
-                <h4 class="card-title">Barbarossa "I Will Abide"</h4>
+                <p class="card-title"><strong>Barbarossa</strong> "I Will Abide"</p>
                 <iframe width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/152629302&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
               </div>
             </div>
-            <div class="card bg-inverse">
+            <div class="card bg-inverse social-media-card">
               <div class="card-block">
-                <h4 class="card-title">MarSara "And She Smelled Like Raspberries"</h4>
+                <p class="card-title"><strong>MarSara</strong> "And She Smelled Like Raspberries"</p>
                 <iframe width="100%" height="300" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/33278406&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
               </div>
             </div>

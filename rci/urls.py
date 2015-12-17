@@ -21,5 +21,6 @@ import rci.views
 urlpatterns = [
     url(r'^$', rci.views.home),
     url(r'^about', rci.views.about),
+    url(r'^clients', rci.views.clients),
     url(r'^admin/', admin.site.urls),
 ]
