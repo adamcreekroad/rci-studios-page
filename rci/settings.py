@@ -25,11 +25,12 @@ SECRET_KEY = 'xc-#dxgw4w-ca78xg834h%y3b0ywxyl(a(n7^cr%6zmp068&j@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 ON_HEROKU = os.environ.get('ON_HEROKU')
 
 if ON_HEROKU:
+    DATABASES = {}
     DATABASES['default'] =  dj_database_url.config()
 else:
     DATABASES = {
