@@ -3,3 +3,6 @@ env
 *.db
 staticfiles
 CACHE
+
+
+.foo
